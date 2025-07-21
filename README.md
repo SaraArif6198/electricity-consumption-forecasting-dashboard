@@ -1,106 +1,118 @@
-# DeveloperHub Task 3 – Electricity Consumption Forecasting using Machine Learning
+#  DeveloperHub Task 3 – Electricity Consumption Forecasting using Machine Learning
+
+##  Task Objective  
+This task focuses on building a machine learning model that predicts **hourly electricity consumption** using historical power usage data. The final product is a **Streamlit-based interactive dashboard** that helps users forecast energy usage based on simple inputs like time and day.
 
 
- **Task Objective**  
-This task focuses on building a machine learning model that predicts hourly electricity consumption using historical power usage data. The final product is a Streamlit-based interactive web dashboard that forecasts future energy usage based on time-related patterns.
-
-
-📁 **Dataset**  
+## 📁 Dataset  
 - **Name**: Household Power Consumption  
 - **Source**: UCI Machine Learning Repository  
 
 
+##  Features Engineered
+- `hour` – Hour of the day (0–23)  
+- `dayofweek` – Day of the week (0=Monday, 6=Sunday)  
+- `is_weekend` – Boolean flag (1 for Saturday/Sunday)
 
- **Features Engineered**:
-- `hour` (Hour of the day)  
-- `dayofweek` (Day of the week)  
-- `is_weekend` (Weekend flag: 1 if Saturday or Sunday)  
+### Target:
+- `Global_active_power` – Electricity consumption (in kW) for the **next hour**
 
- **Target**:
-- `Global_active_power` (Electricity consumption in kilowatts, 1 hour ahead)
+---
 
-
-
- **Tools & Libraries Used**  
-- **Pandas** – Data manipulation and preprocessing  
-- **Matplotlib & Seaborn** – Exploratory data analysis and visualizations  
-- **XGBoost** – Time series regression modeling  
-- **Scikit-learn** – Model evaluation  
-- **Streamlit** – Web dashboard development  
-
+## 🛠️ Tools & Libraries Used
+- `pandas` – Data manipulation and preprocessing  
+- `matplotlib`, `seaborn` – Data exploration and visualization  
+- `xgboost` – Time series regression modeling  
+- `scikit-learn` – Evaluation metrics  
+- `streamlit` – Interactive dashboard development
 
 
-**Approach**
+##  Approach
 
-### 1. Dataset Loading & Initial Exploration
-- Loaded the dataset using `pandas.read_csv()`
-- Combined `Date` and `Time` into a single `Datetime` column
-- Set `Datetime` as the index for time series operations
-- Dropped missing values and cleaned the data
+### 1. Data Loading & Cleaning
+- Combined `Date` and `Time` into a single datetime index  
+- Handled missing values  
+- Filtered and structured the dataset for hourly modeling
 
-### 2. Data Resampling & Preprocessing
-- Resampled data to **hourly averages** for more stable modeling
-- Created new time-based features:
-  - `hour`: Extracted from timestamp  
-  - `dayofweek`: To capture weekly seasonality  
-  - `is_weekend`: To distinguish weekends vs weekdays
+### 2. Feature Engineering
+- Resampled the data to **hourly averages**  
+- Created three time-based features:
+  - `hour`  
+  - `dayofweek`  
+  - `is_weekend`
 
-### 3. Target Engineering
-- Defined the target as the **next hour’s electricity usage**
-- Shifted `Global_active_power` by -1 to align for supervised learning
+### 3. Target Definition
+- Defined the prediction target as the **next hour’s energy usage** by shifting values back 1 hour
 
 ### 4. Model Training
-- Split the data into:
-  - **Training set**: All but the last 168 hours  
-  - **Test set**: Last 168 hours (7 days)
-- Trained three models:
+- Trained three models:  
   - ARIMA  
   - Prophet  
-  - **XGBoost Regressor** ✅ *(Best-performing model)*
-- Selected **XGBoost** for its superior accuracy and robustness
+  - ✅ XGBoost (Best performer)
+- Chose **XGBoost Regressor** due to superior accuracy, speed, and flexibility
 
 ### 5. Evaluation Metrics
 - **Mean Absolute Error (MAE)**  
-- **Root Mean Squared Error (RMSE)**  
-- Evaluated XGBoost predictions on the test set
+- **Root Mean Squared Error (RMSE)**
+
+##  Results & Findings
+- XGBoost showed **strong predictive power** with time-based features
+- Captured consumption patterns across:
+  - Days of the week  
+  - Weekends vs weekdays  
+  - Hourly trends
+- Allows users to plan energy usage, reduce costs, and schedule appliances intelligently
 
 
+## 🖥️ Interactive Streamlit Dashboard  
+🔗 [Live Dashboard Link](https://electricity-consumption-forecasting-dashboard.streamlit.app/)
 
- **Results & Findings**
-- **XGBoost delivered the best performance** among all models
-- Time-based features (`hour`, `dayofweek`, `is_weekend`) were effective in capturing energy usage patterns
-- Model successfully forecasts energy use patterns across days and weekends
-- Forecasts can assist users with **energy planning, cost-saving**, and **appliance scheduling**
+### 👥 User Features:
+- Select from **predefined forecast durations**:
+  - Next 24 hours  
+  - Next 3 days  
+  - Next 7 days  
+  - Custom (up to 168 hours)
+- Choose how to provide data:
+  - **Use default historical data**
+  - **Upload your own data**
+    - Upload a CSV file with proper format (semicolon-separated)
+    - OR enter a single row manually using a form
+- See results as:
+  - 📈 Interactive line chart  
+  - 📋 Data table
 
-•	 🖥️ **Interactive Streamlit Dashboard**  
-- 🔗 [Live Dashboard Link](https://electricity-consumption-forecasting-dashboard-hc5f9prm2eflh9x3.streamlit.app/)
+###  Model Explanation (for non-technical users)
+> The model predicts energy usage based on:
+> - **What hour** it is (e.g., 2 PM)
+> - **What day** it is (e.g., Monday)
+> - **Is it a weekend?** (Yes or No)
+>
+> Using patterns from past data, it predicts things like:
+> “On Mondays at 2 PM, people usually consume 0.73 kW — so that’s my prediction.”
 
-- Users can:
-  - Select forecast period (24 hours, 3 days, 7 days, or custom)
-  - View predicted energy usage as:
-    - 📈 Line chart  
-    - 📋 Data table  
-- Easy to use and informative for both technical and non-technical users
+📌 **Note**: All explanations and error messages are written in plain, human-friendly language.
 
- **Conclusion**
-This task covered the complete machine learning pipeline:
-- ✅ Time series data preprocessing  
-- ✅ Feature and target engineering  
-- ✅ Training and comparison of multiple forecasting models  
-- ✅ Model evaluation and selection  
-- ✅ Real-time dashboard deployment using Streamlit  
+---
 
-The final dashboard allows users to forecast electricity usage up to 7 days in advance, making it a valuable tool for **smart energy monitoring**.
+## ✅ Conclusion
+This task demonstrated the complete ML pipeline:
+-  Time series data processing  
+-  Feature engineering  
+- Model training & evaluation  
+-  Deployment via Streamlit
 
+✅ The dashboard helps users forecast electricity usage easily — up to **7 days in advance** — making it a powerful tool for **smart home energy planning**.
 
-🔗 **Useful Links**
+---
+
+## 🔗 Useful Links
 - [XGBoost Documentation](https://xgboost.readthedocs.io/)
 - [Streamlit Docs](https://docs.streamlit.io/)
 - [Pandas Docs](https://pandas.pydata.org/docs/)
-- [Matplotlib Docs](https://matplotlib.org/stable/)
+- [Matplotlib Docs](https://matplotlib.org/)
 - [Seaborn Docs](https://seaborn.pydata.org/)
 
 ---
 
-🔖 Submitted as part of the **DeveloperHub Internship Program**
-
+📨 **Submitted as part of the DeveloperHub Internship Program**

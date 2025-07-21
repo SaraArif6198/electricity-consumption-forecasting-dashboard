@@ -17,8 +17,6 @@ This task focuses on building a machine learning model that predicts **hourly el
 ### Target:
 - `Global_active_power` – Electricity consumption (in kW) for the **next hour**
 
----
-
 ## 🛠️ Tools & Libraries Used
 - `pandas` – Data manipulation and preprocessing  
 - `matplotlib`, `seaborn` – Data exploration and visualization  

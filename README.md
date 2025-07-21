@@ -93,7 +93,6 @@ This task focuses on building a machine learning model that predicts **hourly el
 
 📌 **Note**: All explanations and error messages are written in plain, human-friendly language.
 
----
 
 ## ✅ Conclusion
 This task demonstrated the complete ML pipeline:
@@ -104,7 +103,6 @@ This task demonstrated the complete ML pipeline:
 
 ✅ The dashboard helps users forecast electricity usage easily — up to **7 days in advance** — making it a powerful tool for **smart home energy planning**.
 
----
 
 ## 🔗 Useful Links
 - [XGBoost Documentation](https://xgboost.readthedocs.io/)

@@ -1,5 +1,5 @@
 # app.py
-
+import joblib
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 
 # Load trained XGBoost model
 model = xgb.XGBRegressor()
-model.load_model("model/xgboost_model.json")  # Adjust path if needed
+model = joblib.load("model/xgboost_model.pkl")
 
 # Streamlit UI setup
 st.set_page_config(page_title="Energy Forecast", layout="centered")
@@ -195,3 +195,4 @@ else:
 
     st.subheader("Forecast Data")
     st.dataframe(future_df[["timestamp", "Predicted Power (kW)"]].rename(columns={"timestamp": "Datetime"}))
+

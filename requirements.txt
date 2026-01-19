@@ -4,4 +4,8 @@ matplotlib
 seaborn
 scikit-learn
 xgboost
+plotly==5.18.0
 streamlit
+
+
+

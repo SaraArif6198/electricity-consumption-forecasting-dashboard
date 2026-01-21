@@ -637,7 +637,7 @@ if choice == "🏠 Energy Forecast":
 # =====================================================
 # 🔹 ABOUT THE AUTHOR
 # =====================================================
-elif choice == "👤 About the Author":
+if choice == "👤 About the Author":
 
     # Sidebar author info
     st.sidebar.markdown("---")
@@ -667,20 +667,23 @@ elif choice == "👤 About the Author":
         except:
             st.info("📷 Photo not available")
     
+    # ❌ author-card REMOVED HERE
     with col2:
         st.markdown("""
-        <div class="author-card">
             <h2 style='margin-top:0;'>Sara Arif</h2>
-            <h4 style='opacity:0.9; margin-bottom:1.5rem;'>Computer Science Student | Aspiring Data Analyst</h4>
+            <h4 style='opacity:0.9; margin-bottom:1.5rem;'>
+                Computer Science Student | Aspiring Data Analyst
+            </h4>
             <p style='line-height:1.8; font-size:1.1rem;'>
-            A motivated 3rd-year Computer Science student with a passion for turning data into actionable insights. Specialized in data analysis, visualization, and machine learning with hands-on experience in building predictive models and interactive applications.
+            A motivated 3rd-year Computer Science student with a passion for turning data into actionable insights.
+            Specialized in data analysis, visualization, and machine learning with hands-on experience in building
+            predictive models and interactive applications.
             </p>
-        </div>
         """, unsafe_allow_html=True)
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # Skills section
+    # Skills section (UNCHANGED)
     st.markdown("<div class='section-header'>💼 Technical Skills</div>", unsafe_allow_html=True)
     
     col1, col2, col3 = st.columns(3)
@@ -717,7 +720,7 @@ elif choice == "👤 About the Author":
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # Expertise areas
+    # Expertise areas (UNCHANGED)
     st.markdown("<div class='section-header'>🎯 Areas of Expertise</div>", unsafe_allow_html=True)
     
     col1, col2 = st.columns(2)
@@ -738,7 +741,7 @@ elif choice == "👤 About the Author":
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # Connect section
+    # Connect section (UNCHANGED)
     st.markdown("<div class='section-header'>🌐 Connect With Me</div>", unsafe_allow_html=True)
     
     col1, col2, col3 = st.columns(3)
@@ -772,7 +775,6 @@ elif choice == "👤 About the Author":
             </div>
         </a>
         """, unsafe_allow_html=True)
-
 # ─────────────────────────────────────────────
 # Footer
 # ─────────────────────────────────────────────

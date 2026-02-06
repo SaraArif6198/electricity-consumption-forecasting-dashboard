@@ -1,3 +1,6 @@
+streamlit==1.19.0
+altair==4.2.2
+
 pandas
 numpy
 matplotlib
@@ -5,7 +8,3 @@ seaborn
 scikit-learn
 xgboost
 plotly==5.18.0
-streamlit
-
-
-
